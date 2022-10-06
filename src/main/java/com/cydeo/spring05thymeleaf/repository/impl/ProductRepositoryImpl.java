@@ -11,6 +11,7 @@ import java.util.UUID;
 @Component
 public class ProductRepositoryImpl implements ProductRepository {
     public static List<Product> PRODUCT_LIST = new ArrayList<>();
+
     @Override
     public boolean save(Product product){
         PRODUCT_LIST.add(product);

@@ -3,6 +3,7 @@ package com.cydeo.spring05thymeleaf.service.impl;
 
 import com.cydeo.spring05thymeleaf.model.Product;
 import com.cydeo.spring05thymeleaf.repository.ProductRepository;
+import com.cydeo.spring05thymeleaf.repository.impl.ProductRepositoryImpl;
 import com.cydeo.spring05thymeleaf.service.ProductService;
 import org.springframework.stereotype.Service;
 
@@ -20,19 +21,20 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public boolean productCreate(Product product){
         // todo implement method
-        return true;
+        return  productRepository.save(product);
+
     }
 
     @Override
     public List<Product> listProduct() {
         // todo implement method
-        return new ArrayList<>();
+        return productRepository.findAll();
     }
 
     @Override
     public Product findProductById(UUID uuid){
         // todo implement method
-        return new Product();
+        return productRepository.findProductById(uuid);
     }
 
 }
