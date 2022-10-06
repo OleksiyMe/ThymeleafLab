@@ -48,8 +48,8 @@ public class GeneralController {
 
     @GetMapping("/show-cart/{id}/{quantity}")
     public String addProductToCart(@PathVariable("id") String id,
-                                   @PathVariable("quantity") Integer quantity,    Model model) {
-        cartService.addToCart(UUID.fromString(id), quantity);
+                                   @PathVariable("quantity") String quantityString,    Model model) {
+        cartService.addToCart(UUID.fromString(id), Integer.valueOf(quantityString));
         model.addAttribute("cart", CartServiceImpl.CART);
         model.addAttribute("cartItems", CartServiceImpl.CART.getCartItemList());
 
