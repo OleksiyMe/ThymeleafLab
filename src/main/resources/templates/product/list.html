@@ -34,7 +34,9 @@
                         <td th:text="${eachProduct.price}"></td><!-- todo product variables-->
                         <td th:text="${eachProduct.remainingQuantity}"></td><!-- todo product variables-->
                         <td>
-                            <a class="btn btn-primary">Add Cart<i></i></a> <!-- todo a href with two variables-->
+                            <a class="btn btn-primary"
+                               th:href="@{/show-cart/{id}/{q} (id=${eachProduct.id},
+                                q=${eachProduct.remainingQuantity})}">Add Cart<i></i></a> <!-- todo a href with two variables-->
                         </td>
                     </tr>
                     </tbody>
