@@ -46,10 +46,10 @@ public class GeneralController {
         return "redirect:/list";
     }
 
-    @GetMapping("/show-cart/{id}/{quantity}")
-    public String addProductToCart(@PathVariable("id") String id,
+    @GetMapping("/cart/{id}/{quantity}")
+    public String addProductToCart(@PathVariable("id") UUID id,
                                    @PathVariable("quantity") String quantityString,    Model model) {
-        cartService.addToCart(UUID.fromString(id), Integer.valueOf(quantityString));
+        cartService.addToCart(UUID.fromString(id.toString()) , Integer.valueOf(quantityString));
         model.addAttribute("cart", CartServiceImpl.CART);
         model.addAttribute("cartItems", CartServiceImpl.CART.getCartItemList());
 
@@ -57,7 +57,7 @@ public class GeneralController {
         return "/cart/show-cart";
     }
 
-    @GetMapping("/show-cart")
+    @GetMapping("/cart")
     public String addProductToCart( Model model) {
 
         model.addAttribute("cart", CartServiceImpl.CART);
@@ -67,11 +67,11 @@ public class GeneralController {
         return "/cart/show-cart";
     }
     @GetMapping("/delete-from-cart/{id}")
-    public String addProductToCart(@PathVariable("id") String id) {
+    public String deleteCartItem(@PathVariable("id") UUID id) {
 
-        cartService.deleteFromCart(UUID.fromString(id));
+        cartService.deleteFromCart(id);
 
-        return "redirect:/show-cart";
+        return "redirect:/cart";
     }
 
 
